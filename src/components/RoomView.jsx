@@ -31,6 +31,7 @@ const pulse = keyframes`
     50% { box-shadow: 0 0 40px rgba(255, 193, 7, 0.8); }
 `;
 
+
 // Styled Components
 const ViewerContainer = styled.div`
     width: 100vw;
