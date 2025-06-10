@@ -5,6 +5,7 @@ import Island1 from '../components/Islands/Island1';
 import Island2 from '../components/Islands/Island2';
 import Island3 from '../components/Islands/Island3';
 
+
 // Styled component for transition container
 const TransitionContainer = styled.div`
     width: 100vw;
