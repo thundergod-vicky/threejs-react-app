@@ -19,9 +19,8 @@ jobs:
           node-version: 18
           
           
-    #   - name: 🔄 Rename .env.sample to .env
-    #     run: mv .env.sample .env
-
+      - name: 🔄 Rename .env.sample to .env
+        run: mv .env.sample .env
 
       - name: Running Install Commands
         run: |
@@ -31,19 +30,10 @@ jobs:
         run: |
           CI=false npm run build
 
-      # First, try with standard FTP
-      - name: Deploying to Hostinger (FTP)
+      - name: Deploying to Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: growin360.com
+          server: ftp.growin360.com
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
-          server-dir: /public_html/
-          protocol: ftp
-          port: 21
-          dry-run: false
-          log-level: verbose
-          timeout: 30000
-          
-          
