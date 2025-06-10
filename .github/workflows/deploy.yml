@@ -1,0 +1,39 @@
+on:
+  push:
+    branches:
+      - master
+
+name: Deployment of the React App
+
+jobs:
+  Web-Deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get Latest Code
+        uses: actions/checkout@v3
+
+      - name: Setting up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          
+          
+      - name: 🔄 Rename .env.sample to .env
+        run: mv .env.sample .env
+
+      - name: Running Install Commands
+        run: |
+          npm install --force
+
+      - name: Running Build Commands
+        run: |
+          CI=false npm run build
+
+      - name: Deploying to Hostinger
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ftp.gll.one
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./build/
