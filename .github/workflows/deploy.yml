@@ -22,7 +22,7 @@ jobs:
     #   - name: 🔄 Rename .env.sample to .env
     #     run: mv .env.sample .env
 
-    
+
       - name: Running Install Commands
         run: |
           npm install --force
@@ -38,3 +38,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./build/
+          
