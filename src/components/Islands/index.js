@@ -1,0 +1,1 @@
+export { default as Island1 } from './Island1'; 
