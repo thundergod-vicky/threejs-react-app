@@ -31,7 +31,8 @@ jobs:
         run: |
           CI=false npm run build
 
-      - name: Deploying to Hostinger
+      # First, try with standard FTP
+      - name: Deploying to Hostinger (FTP)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: growin360.com
@@ -39,7 +40,10 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
           server-dir: /public_html/
-          protocol: ftps
-          security: strict
+          protocol: ftp
+          port: 21
+          dry-run: false
+          log-level: verbose
+          timeout: 30000
           
           
